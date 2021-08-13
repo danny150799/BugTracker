@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
 export default function menu (props) {
+    function changePageNumber(page){
+        props.setPageValue(props.pages[page])
+    }
     return (
     <div>
         <aside className="main-sidebar sidebar-dark-primary elevation-4">
@@ -25,7 +28,7 @@ export default function menu (props) {
                 with font-awesome or any other icon font library */}
                 
                 <li className="nav-item">
-                    <a onClick={()=>{props.setPageValue(props.pages[0])}} className="nav-link">
+                    <a onClick={()=>{changePageNumber(0)}} className="nav-link">
                     <i className="nav-icon far fa-calendar-alt" />
                     <p>
                         All Issues
@@ -33,7 +36,7 @@ export default function menu (props) {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a onClick={()=>{props.setPageValue(props.pages[1])}} className="nav-link">
+                    <a onClick={()=>{changePageNumber(1)}} className="nav-link">
                     <i className="nav-icon far fa-image" />
                     <p>
                         Open Issues
@@ -41,7 +44,7 @@ export default function menu (props) {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a onClick={()=>{props.setPageValue(props.pages[2])}} className="nav-link">
+                    <a onClick={()=>{changePageNumber(2)}} className="nav-link">
                     <i className="nav-icon fas fa-columns" />
                     <p>
                         Read Issues
