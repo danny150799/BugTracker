@@ -55,7 +55,7 @@ function App() {
 
   function changePageToDisplay (){
     if(page === pages[0]){
-      return <All_Issues />
+      return <All_Issues issueQ={issueQ}/>
     }else if(page === pages[1]){ 
       return <Open_Issues setNewIssueValue={setNewIssueValue} addNewIssue={addNewIssue} setNewIssue={setNewIssue}/>
     }else if(page === pages[2]){  
