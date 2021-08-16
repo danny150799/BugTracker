@@ -1,7 +1,33 @@
 import React, { Component } from 'react'
 
 export default function all_issues (props) {
-    
+
+    function createIssueList(){
+        const tbody = document.getElementById("issue-container")
+        for (let issue = 0; issue < props.issueQ.length; issue++) {
+            const trow = document.createElement("tr")
+            const td_array = new Array(6)
+
+            for (let td_index = 0; td_index < td_array.length; td_index++) {
+                td_array[td_index] = document.createElement("td")
+                if (td_index === 2) {
+                    td_array[td_index].className("mailbox-star")
+                }else if (td_index === 3) {
+                    td_array[td_index].className("mailbox-name")
+                }else if (td_index === 4) {
+                    td_array[td_index].className("mailbox-subject")
+                }else if (td_index === 5) {
+                    td_array[td_index].className("mailbox-subject")
+                }
+            }
+
+            const tempdiv = document.createElement("div")
+            tempdiv.className("icheck-primary")
+            tbody.appendChild(trow)
+            
+        }
+    }
+
     return (
         <div>
         <div className="content-wrapper">
@@ -179,7 +205,7 @@ export default function all_issues (props) {
                             </div>
                         </div>
                         <div className="table-responsive mailbox-messages">
-                        <table className="table table-hover table-striped">
+                        <table className="table table-hover table-striped" id="issue-container">
                             <tbody>
                             <tr>
                                 <td>
@@ -188,22 +214,7 @@ export default function all_issues (props) {
                                     <label htmlFor="check1" />
                                 </div>
                                 </td>
-                                <td className="mailbox-star"><a href="#"><i className="fas fa-star text-warning" /></a></td>
-                                <td className="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
-                                <td className="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                                </td>
-                                <td className="mailbox-attachment" />
-                                <td className="mailbox-date">5 mins ago</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <div className="icheck-primary">
-                                    <input type="checkbox" defaultValue id="check1" />
-                                    <label htmlFor="check1" />
-                                </div>
-                                </td>
-                                <td className="mailbox-star"><a href="#"><i className="fas fa-star text-warning" /></a></td>
-                                <td className="mailbox-name"><a href="read-mail.html">Alexander Pierce</a></td>
+                                <td className="mailbox-name"><a >Alexander Pierce</a></td>
                                 <td className="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
                                 </td>
                                 <td className="mailbox-attachment" />
