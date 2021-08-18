@@ -1,23 +1,43 @@
 import React, { Component } from 'react'
 
 export default function all_issues (props) {
-
+    window.onload = function(){
+        createIssueList()
+    }
     function createIssueList(){
         const tbody = document.getElementById("issue-container")
         for (let issue = 0; issue < props.issueQ.length; issue++) {
-            const trow = document.createElement("tr")
-            const td_array = new Array(6)
+            const trow = document.createElement("tr").className("row")
+            tbody.appendChild(trow)
+            const td_array = new Array(5)
 
             for (let td_index = 0; td_index < td_array.length; td_index++) {
                 td_array[td_index] = document.createElement("td")
-                if (td_index === 2) {
-                    td_array[td_index].className("mailbox-star")
+                if (td_index === 0) {
+                    td_array[td_index].className("mailbox-name col-lg-1")
+                    
+                    const checklist_div = document.createElement("div").className("icheck-primary")
+                    td_array[td_index].appendChild(checklist_div)
+
+                    const checklist_input = document.createElement("input").type("checkbox").id("check1")
+                    checklist_div.appendChild(checklist_input)
+
+                    const checklist_lable = document.createElement("lable").htmlFor("check1")
+                    checklist_div.appendChild(checklist_lable)
+
+                    trow.appendChild(td_array[td_index])
+                }else if (td_index === 1) {
+                    td_array[td_index].className("mailbox-name col-lg-1")
+                    trow.appendChild(td_array[td_index])
+                }else if (td_index === 2) {
+                    td_array[td_index].className("mailbox-name col-lg-7")
+                    trow.appendChild(td_array[td_index])
                 }else if (td_index === 3) {
-                    td_array[td_index].className("mailbox-name")
-                }else if (td_index === 4) {
-                    td_array[td_index].className("mailbox-subject")
-                }else if (td_index === 5) {
-                    td_array[td_index].className("mailbox-subject")
+                    td_array[td_index].className("mailbox-name col-lg")
+                    trow.appendChild(td_array[td_index])
+                }else {
+                    td_array[td_index].className("mailbox-name col-lg")
+                    trow.appendChild(td_array[td_index])
                 }
             }
 
@@ -188,7 +208,7 @@ export default function all_issues (props) {
                         <div className="mailbox-controls">
                             <div className ="row">
                                 <div className="col-lg-1">
-                                    Type
+                                   
                                 </div>
                                 <div className="col-lg-1">
                                     ID
@@ -207,18 +227,17 @@ export default function all_issues (props) {
                         <div className="table-responsive mailbox-messages">
                         <table className="table table-hover table-striped" id="issue-container">
                             <tbody>
-                            <tr>
-                                <td>
+                            <tr className="row">
+                                <td className="col-lg-1">
                                 <div className="icheck-primary">
-                                    <input type="checkbox" defaultValue id="check1" />
+                                    <input type="checkbox" id="check1" />
                                     <label htmlFor="check1" />
                                 </div>
                                 </td>
-                                <td className="mailbox-name"><a >Alexander Pierce</a></td>
-                                <td className="mailbox-subject"><b>AdminLTE 3.0 Issue</b> - Trying to find a solution to this problem...
-                                </td>
-                                <td className="mailbox-attachment" />
-                                <td className="mailbox-date">5 mins ago</td>
+                                <td className="mailbox-name col-lg-1"><a >Alexander</a></td>
+                                <td className="mailbox-subject col-lg-7">Trying to find a solution to this problem...</td>
+                                <td className="mailbox-name col-lg">Alexander Pierce</td>
+                                <td className="mailbox-name col-lg"><a >Alexander Pierce</a></td>
                             </tr>
                             </tbody>
                             
