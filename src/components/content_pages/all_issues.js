@@ -5,47 +5,49 @@ export default function all_issues (props) {
         createIssueList()
     }
     function createIssueList(){
-        const tbody = document.getElementById("issue-container")
-        for (let issue = 0; issue < props.issueQ.length; issue++) {
-            const trow = document.createElement("tr").className("row")
-            tbody.appendChild(trow)
-            const td_array = new Array(5)
+        let tableContainer = document.getElementById("issue-container")
+        let tbody = document.createElement("tbody")
+        let trow = document.createElement("tr")
+        trow.className = "row"
+        
+        let issueArray = new Array(5)
+        for (let index = 0; index < issueArray.length; index++) {
+            issueArray[index] = document.createElement("td")
+            if (index === 0) {
+                issueArray[index].className = "col-lg-1"
+                let tempDiv = document.createElement("div")
+                tempDiv.className = "icheck-primary"
 
-            for (let td_index = 0; td_index < td_array.length; td_index++) {
-                td_array[td_index] = document.createElement("td")
-                if (td_index === 0) {
-                    td_array[td_index].className("mailbox-name col-lg-1")
-                    
-                    const checklist_div = document.createElement("div").className("icheck-primary")
-                    td_array[td_index].appendChild(checklist_div)
+                let tempInput = document.createElement("input")
+                tempInput.type = "checkbox"
+                tempInput.id = "check1"
+                tempDiv.appendChild(tempInput)
 
-                    const checklist_input = document.createElement("input").type("checkbox").id("check1")
-                    checklist_div.appendChild(checklist_input)
+                let tempLable = document.createElement("label")
+                tempLable.htmlFor = "check1"
+                tempDiv.appendChild(tempLable)
 
-                    const checklist_lable = document.createElement("lable").htmlFor("check1")
-                    checklist_div.appendChild(checklist_lable)
-
-                    trow.appendChild(td_array[td_index])
-                }else if (td_index === 1) {
-                    td_array[td_index].className("mailbox-name col-lg-1")
-                    trow.appendChild(td_array[td_index])
-                }else if (td_index === 2) {
-                    td_array[td_index].className("mailbox-name col-lg-7")
-                    trow.appendChild(td_array[td_index])
-                }else if (td_index === 3) {
-                    td_array[td_index].className("mailbox-name col-lg")
-                    trow.appendChild(td_array[td_index])
-                }else {
-                    td_array[td_index].className("mailbox-name col-lg")
-                    trow.appendChild(td_array[td_index])
-                }
+                issueArray[index].appendChild(tempDiv)
+            }else if (index === 1) {
+                issueArray[index].className = "mailbox-name col-lg-1"
+                issueArray[index].textContent = "lmao"
+            }else if (index === 2) {
+                issueArray[index].className = "mailbox-subject col-lg-7"
+                issueArray[index].textContent = "lmao"
+            }else if (index === 3) {
+                issueArray[index].className = "mailbox-name col-lg"
+                issueArray[index].textContent = "lmao"
+            }else {
+                issueArray[index].className = "mailbox-name col-lg"
+                issueArray[index].textContent = "lmao"
             }
 
-            const tempdiv = document.createElement("div")
-            tempdiv.className("icheck-primary")
-            tbody.appendChild(trow)
-            
+            trow.appendChild(issueArray[index])
         }
+
+        tbody.appendChild(trow)
+        tableContainer.appendChild(tbody)
+        
     }
 
     return (
@@ -225,23 +227,7 @@ export default function all_issues (props) {
                             </div>
                         </div>
                         <div className="table-responsive mailbox-messages">
-                        <table className="table table-hover table-striped" id="issue-container">
-                            <tbody>
-                            <tr className="row">
-                                <td className="col-lg-1">
-                                <div className="icheck-primary">
-                                    <input type="checkbox" id="check1" />
-                                    <label htmlFor="check1" />
-                                </div>
-                                </td>
-                                <td className="mailbox-name col-lg-1"><a >Alexander</a></td>
-                                <td className="mailbox-subject col-lg-7">Trying to find a solution to this problem...</td>
-                                <td className="mailbox-name col-lg">Alexander Pierce</td>
-                                <td className="mailbox-name col-lg"><a >Alexander Pierce</a></td>
-                            </tr>
-                            </tbody>
-                            
-                        </table>
+                        <table className="table table-hover table-striped" id="issue-container"> </table>
                         {/* /.table */}
                         </div>
                         {/* /.mail-box-messages */}
